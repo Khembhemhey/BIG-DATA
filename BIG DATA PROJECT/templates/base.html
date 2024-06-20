@@ -1,0 +1,36 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Video Game Analytics Dashboard{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <!-- Add any additional CSS or meta tags here -->
+</head>
+<body>
+    
+    <header>
+        <nav>
+            <h1>Video Game Analytics Dashboard</h1>
+            <ul>
+                <li><a href="{%url 'index'%}">Home</a></li>
+                <li><a href="{%url 'statistics'%}">Statistics</a></li>
+                <li><a href="{%url 'insights'%}">Insights</a></li>
+                <li><a href="{%url 'top'%}">Ranking</a></li>
+                <li><a href="{%url 'visual'%}">Graph</a></li>
+                <li><a href="{%url 'about'%}">About</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        {% block content %}
+        <!-- This is where content from child templates will be inserted -->
+        {% endblock %}
+    </main>
+
+   
+</body>
+</html>

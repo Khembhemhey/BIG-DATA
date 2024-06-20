@@ -1,0 +1,155 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Graph
+{% endblock %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Graph</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</head>
+<head>
+    <title>Video Game Sales Visualization</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <h1>Video Game Sales: All Regions</h1>
+    <div class='tableauPlaceholder' id='viz1714676089016' style='position: relative'>
+        <noscript>
+            <a href='#'>
+                <img alt='Video Game Sales: All Regions' src='https://public.tableau.com/static/images/Al/AllRegions_17146760382560/AllRegions-Sales/1_rss.png' style='border: none' />
+            </a>
+        </noscript>
+        <object class='tableauViz' style='display:none;'>
+            <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> 
+            <param name='embed_code_version' value='3' /> 
+            <param name='site_root' value='' />
+            <param name='name' value='AllRegions_17146760382560/AllRegions-Sales' />
+            <param name='tabs' value='no' />
+            <param name='toolbar' value='yes' />
+            <param name='static_image' value='https://public.tableau.com/static/images/Al/AllRegions_17146760382560/AllRegions-Sales/1.png' />
+            <param name='animate_transition' value='yes' />
+            <param name='display_static_image' value='yes' />
+            <param name='display_spinner' value='yes' />
+            <param name='display_overlay' value='yes' />
+            <param name='display_count' value='yes' />
+            <param name='language' value='en-US' />
+        </object>
+    </div>
+    
+    <h1>Top Games Visualization</h1>
+    <div class='tableauPlaceholder' id='viz1715366180598' style='position: relative'>
+        <noscript>
+            <a href='#'>
+                <img alt='Top Games' src='https://public.tableau.com/static/images/To/Topgames_17153655768950/NA2/1_rss.png' style='border: none' />
+            </a>
+        </noscript>
+        <object class='tableauViz' style='display:none;'>
+            <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> 
+            <param name='embed_code_version' value='3' /> 
+            <param name='site_root' value='' />
+            <param name='name' value='Topgames_17153655768950/NA2' />
+            <param name='tabs' value='yes' />
+            <param name='toolbar' value='yes' />
+            <param name='static_image' value='https://public.tableau.com/static/images/To/Topgames_17153655768950/NA2/1.png' />
+            <param name='animate_transition' value='yes' />
+            <param name='display_static_image' value='yes' />
+            <param name='display_spinner' value='yes' />
+            <param name='display_overlay' value='yes' />
+            <param name='display_count' value='yes' />
+            <param name='language' value='en-US' />
+        </object>
+    </div>
+    
+    <h1>Video Game Sales by Region</h1>
+    <div class='tableauPlaceholder' id='viz1714817566930' style='position: relative'>
+        <noscript>
+            <a href='#'>
+                <img alt='Video Game Sales by Region' src='https://public.tableau.com/static/images/Vi/VideoGameSalesbyregion/OthersvsGlobalSales/1_rss.png' style='border: none' />
+            </a>
+        </noscript>
+        <object class='tableauViz' style='display:none;'>
+            <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> 
+            <param name='embed_code_version' value='3' /> 
+            <param name='site_root' value='' />
+            <param name='name' value='VideoGameSalesbyregion/OthersvsGlobalSales' />
+            <param name='tabs' value='yes' />
+            <param name='toolbar' value='yes' />
+            <param name='static_image' value='https://public.tableau.com/static/images/Vi/VideoGameSalesbyregion/OthersvsGlobalSales/1.png' />
+            <param name='animate_transition' value='yes' />
+            <param name='display_static_image' value='yes' />
+            <param name='display_spinner' value='yes' />
+            <param name='display_overlay' value='yes' />
+            <param name='display_count' value='yes' />
+            <param name='language' value='en-US' />
+        </object>
+    </div>
+    
+    <h1>Top Publishers and Their Games (Global Market, 2006-2016)</h1>
+    <div class='tableauPlaceholder' id='viz1715605218560' style='position: relative'>
+        <noscript>
+            <a href='#'>
+                <img alt='Top Publishers and Their Games' src='https://public.tableau.com/static/images/To/Toppublishers_17156051014380/Sheet72/1_rss.png' style='border: none' />
+            </a>
+        </noscript>
+        <object class='tableauViz' style='display:none;'>
+            <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> 
+            <param name='embed_code_version' value='3' /> 
+            <param name='site_root' value='' />
+            <param name='name' value='Toppublishers_17156051014380/Sheet72' />
+            <param name='tabs' value='no' />
+            <param name='toolbar' value='yes' />
+            <param name='static_image' value='https://public.tableau.com/static/images/To/Toppublishers_17156051014380/Sheet72/1.png' />
+            <param name='animate_transition' value='yes' />
+            <param name='display_static_image' value='yes' />
+            <param name='display_spinner' value='yes' />
+            <param name='display_overlay' value='yes' />
+            <param name='display_count' value='yes' />
+            <param name='language' value='en-US' />
+        </object>
+    </div>
+    
+    <script type='text/javascript'>
+        var divElement1 = document.getElementById('viz1714676089016');
+        var vizElement1 = divElement1.getElementsByTagName('object')[0];
+        vizElement1.style.width = '100%';
+        vizElement1.style.height = (divElement1.offsetWidth * 0.75) + 'px';
+        var scriptElement1 = document.createElement('script');
+        scriptElement1.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';
+        vizElement1.parentNode.insertBefore(scriptElement1, vizElement1);
+
+        var divElement2 = document.getElementById('viz1715366180598');
+        var vizElement2 = divElement2.getElementsByTagName('object')[0];
+        vizElement2.style.width = '100%';
+        vizElement2.style.height = (divElement2.offsetWidth * 0.75) + 'px';
+        var scriptElement2 = document.createElement('script');
+        scriptElement2.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';
+        vizElement2.parentNode.insertBefore(scriptElement2, vizElement2);
+
+        var divElement3 = document.getElementById('viz1714817566930');
+        var vizElement3 = divElement3.getElementsByTagName('object')[0];
+        vizElement3.style.width = '100%';
+        vizElement3.style.height = (divElement3.offsetWidth * 0.75) + 'px';
+        var scriptElement3 = document.createElement('script');
+        scriptElement3.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';
+        vizElement3.parentNode.insertBefore(scriptElement3, vizElement3);
+
+        var divElement4 = document.getElementById('viz1715605218560');
+        var vizElement4 = divElement4.getElementsByTagName('object')[0];
+        vizElement4.style.width = '100%';
+        vizElement4.style.height = (divElement4.offsetWidth * 0.75) + 'px';
+        var scriptElement4 = document.createElement('script');
+        scriptElement4.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';
+        vizElement4.parentNode.insertBefore(scriptElement4, vizElement4);
+    </script>
+</body>
+</html>
+{% endblock %}

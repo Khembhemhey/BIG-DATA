@@ -1,0 +1,290 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Ranking
+{% endblock %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ranking</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <script>
+        function showTable(category) {
+            // Hide all tables
+            var tables = document.querySelectorAll('.sales-table');
+            tables.forEach(function(table) {
+                table.style.display = 'none';
+            });
+            // Show the selected table
+            var selectedTable = document.getElementById(category);
+            if (selectedTable) {
+                selectedTable.style.display = 'block';
+            }
+        }
+    </script>
+</head>
+<body>
+
+    <h1>Select Category</h1>
+    <select onchange="showTable(this.value)">
+        <option value="">-- Select Category --</option>
+        <option value="overall">Overall</option>
+        <option value="na-sales">North America Sales</option>
+        <option value="eu-sales">European Union Sales</option>
+        <option value="jp-sales">Japan Sales</option>
+        <option value="other-sales">Other Sales</option>
+        <option value="global-sales">Global Sales</option>
+        <option value="critic-score">Critic Score</option>
+        <option value="critic-count">Critic Count</option>
+        <option value="user-score">User Score</option>
+        <option value="user-count">User Count</option>
+    </select>
+
+    <div id="overall" class="sales-table" style="display: none;">
+        <h1>Overall Top 10</h1>
+        <div class="scroll-box">
+            <table border="1">
+                <thead>
+                    <tr>
+                        {% for column in first_row_keys %}
+                        <th>{{ column }}</th>
+                        {% endfor %}
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for row in top_10_rows_data %}
+                    <tr>
+                        {% for key, value in row.items %}
+                        <td>{{ value }}</td>
+                        {% endfor %}
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div id="na-sales" class="sales-table" style="display: none;">
+        <h1>Top 10 of North America Sales</h1>
+        <div class="scroll-box">
+            <table border="1">
+                <thead>
+                    <tr>
+                        {% for column in first_row_keys %}
+                        <th>{{ column }}</th>
+                        {% endfor %}
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for row in top_10_na_sales_data %}
+                    <tr>
+                        {% for key, value in row.items %}
+                        <td>{{ value }}</td>
+                        {% endfor %}
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div id="eu-sales" class="sales-table" style="display: none;">
+        <h1>Top 10 of European Union Sales</h1>
+        <div class="scroll-box">
+            <table border="1">
+                <thead>
+                    <tr>
+                        {% for column in first_row_keys %}
+                        <th>{{ column }}</th>
+                        {% endfor %}
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for row in top_10_eu_sales_data %}
+                    <tr>
+                        {% for key, value in row.items %}
+                        <td>{{ value }}</td>
+                        {% endfor %}
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div id="jp-sales" class="sales-table" style="display: none;">
+        <h1>Top 10 of Japan Sales</h1>
+        <div class="scroll-box">
+            <table border="1">
+                <thead>
+                    <tr>
+                        {% for column in first_row_keys %}
+                        <th>{{ column }}</th>
+                        {% endfor %}
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for row in top_10_jp_sales_data %}
+                    <tr>
+                        {% for key, value in row.items %}
+                        <td>{{ value }}</td>
+                        {% endfor %}
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div id="other-sales" class="sales-table" style="display: none;">
+        <h1>Top 10 of Other Sales</h1>
+        <div class="scroll-box">
+            <table border="1">
+                <thead>
+                    <tr>
+                        {% for column in first_row_keys %}
+                        <th>{{ column }}</th>
+                        {% endfor %}
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for row in top_10_Other_sales_data %}
+                    <tr>
+                        {% for key, value in row.items %}
+                        <td>{{ value }}</td>
+                        {% endfor %}
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div id="global-sales" class="sales-table" style="display: none;">
+        <h1>Top 10 of Global Sales</h1>
+        <div class="scroll-box">
+            <table border="1">
+                <thead>
+                    <tr>
+                        {% for column in first_row_keys %}
+                        <th>{{ column }}</th>
+                        {% endfor %}
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for row in top_10_Global_sales_data %}
+                    <tr>
+                        {% for key, value in row.items %}
+                        <td>{{ value }}</td>
+                        {% endfor %}
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div id="critic-score" class="sales-table" style="display: none;">
+        <h1>Top 10 of Critic Score</h1>
+        <div class="scroll-box">
+            <table border="1">
+                <thead>
+                    <tr>
+                        {% for column in first_row_keys %}
+                        <th>{{ column }}</th>
+                        {% endfor %}
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for row in top_10_Critic_Score_data %}
+                    <tr>
+                        {% for key, value in row.items %}
+                        <td>{{ value }}</td>
+                        {% endfor %}
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div id="critic-count" class="sales-table" style="display: none;">
+        <h1>Top 10 of Critic Count</h1>
+        <div class="scroll-box">
+            <table border="1">
+                <thead>
+                    <tr>
+                        {% for column in first_row_keys %}
+                        <th>{{ column }}</th>
+                        {% endfor %}
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for row in top_10_Critic_Count_data %}
+                    <tr>
+                        {% for key, value in row.items %}
+                        <td>{{ value }}</td>
+                        {% endfor %}
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div id="user-score" class="sales-table" style="display: none;">
+        <h1>Top 10 of User Score</h1>
+        <div class="scroll-box">
+            <table border="1">
+                <thead>
+                    <tr>
+                        {% for column in first_row_keys %}
+                        <th>{{ column }}</th>
+                        {% endfor %}
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for row in top_10_User_Score_data %}
+                    <tr>
+                        {% for key, value in row.items %}
+                        <td>{{ value }}</td>
+                        {% endfor %}
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div id="user-count" class="sales-table" style="display: none;">
+        <h1>Top 10 of User Count</h1>
+        <div class="scroll-box">
+            <table border="1">
+                <thead>
+                    <tr>
+                        {% for column in first_row_keys %}
+                        <th>{{ column }}</th>
+                        {% endfor %}
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for row in top_10_User_Count_data %}
+                    <tr>
+                        {% for key, value in row.items %}
+                        <td>{{ value }}</td>
+                        {% endfor %}
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    
+</body>
+
+</html>
+{% endblock %}

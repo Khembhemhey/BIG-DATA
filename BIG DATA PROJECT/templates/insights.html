@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Insights
+{% endblock %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Column Insights</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <script>
+        function filterTable() {
+            var dropdown = document.getElementById("columnFilter");
+            var filter = dropdown.value.toLowerCase();
+            var rows = document.querySelectorAll(".data-row");
+            rows.forEach(function(row) {
+                var column = row.querySelector(".column-cell").textContent.toLowerCase();
+                if (filter === "all" || column === filter) {
+                    row.style.display = "";
+                } else {
+                    row.style.display = "none";
+                }
+            });
+        }
+    </script>
+</head>
+<body>
+    <h1>Column Insights</h1>
+    <label for="columnFilter">Filter by Column:</label>
+    <select id="columnFilter" onchange="filterTable()">
+        <option value="all">All</option>
+        <option value="platform">Platform</option>
+        <option value="genre">Genre</option>
+        <option value="publisher">Publisher</option>
+        <option value="user_score">User_Score</option>
+        <option value="developer">Developer</option>
+        <option value="rating">Rating</option>
+    </select>
+    {% if insights %}
+        <div class="scroll-box">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Column</th>
+                        <th>Insight</th>
+                        <th>Value</th>
+                        <th>Count</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for column, stats in insights.items %}
+                        {% for stat_name, stat_value in stats.items %}
+                            {% if stat_name == "top use" %}
+                                {% for word, count in stat_value %}
+                                    <tr class="data-row {% if column in 'Platform Genre Publisher User_Score Developer Rating' %}highlight{% endif %}">
+                                        <td class="column-cell">{{ column }}</td>
+                                        <td>{{ stat_name }}</td>
+                                        <td>{{ word }}</td>
+                                        <td>{{ count }}</td>
+                                    </tr>
+                                {% endfor %}
+                            {% else %}
+                                <tr class="data-row {% if column in 'Platform Genre Publisher User_Score Developer Rating' %}highlight{% endif %}">
+                                    <td class="column-cell">{{ column }}</td>
+                                    <td>{{ stat_name }}</td>
+                                    <td>{{ stat_value }}</td>
+                                    <td></td>
+                                </tr>
+                            {% endif %}
+                        {% endfor %}
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    {% else %}
+        <p>No insights available.</p>
+    {% endif %}
+</body>
+</html>
+{% endblock %}

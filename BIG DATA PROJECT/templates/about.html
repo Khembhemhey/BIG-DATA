@@ -1,0 +1,122 @@
+{% extends "base.html" %}
+
+{% block title %}
+    About
+{% endblock %}
+{% load static %}
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Game Analytics Dashboard</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    {% if message %}
+    <p>{{ message }}</p>
+    {% endif %}
+<div class="about-main">
+   <div class="about-col-1">
+        <div class="headings">
+            <h1> About </h1>
+        </div>
+        <div class="about-content">
+            <p>
+                The "Video Games Sales with Ratings" dataset available on Kaggle provides a comprehensive overview of the gaming industry, merging sales data with critical and user ratings. It encompasses various details such as game titles, release dates, platforms, sales figures across different regions, and ratings from both critics and users. This dataset serves as a valuable resource for analyzing trends in game popularity, platform preferences, and the relationship between sales and ratings. Researchers and enthusiasts can leverage it to explore factors influencing game success and to gain insights into the dynamics of the gaming market. 
+            </p>
+        </div>
+   </div>
+   <div class="about-col-1">
+        <div class="headings">
+            <h1> Dataset Columns </h1>
+        </div>
+        <div class="about-content">
+            <p>
+                
+The dataset features essential attributes of video games and their market performance. It includes details such as game titles, platforms, release years, genres, publishers, and sales figures in North America, European Union, Japan, other and global, enabling comprehensive analysis of the industry's landscape.            </p>
+ 
+            <!-- <p> 
+                The dataset contains historical stock data for all the stocks in Yahoo Finance API, the files is named after their respective stock symbols. Each file is in CSV format and will contain the following columns:            </p> -->
+        </div>
+   </div>
+   
+   
+
+</div>
+<div class="headings" id="columns">
+    <h1>Columns</h1>
+</div>
+<div class="grid-container">
+    <div class="card">
+        <h3>Name</h3>
+        <p>The name of the video game.</p>
+    </div>
+    <div class="card">
+        <h3>Platform</h3>
+        <p>The platforms on which the game was released.</p>
+    </div>
+    <div class="card">
+        <h3>Year of Release</h3>
+        <p>The year the game was released.</p>
+    </div>
+    <div class="card">
+        <h3>Genre</h3>
+        <p>The genre of the game.</p>
+    </div>
+    <div class="card">
+        <h3>Publisher</h3>
+        <p>The publisher of the game.</p>
+    </div>
+    <div class="card">
+        <h3>North America Sales</h3>
+        <p>Sales figures in North America (in millions).</p>
+    </div>
+    <div class="card">
+        <h3>European Union Sales</h3>
+        <p>Sales figures in the European Union (in millions).</p>
+    </div>
+    <div class="card">
+        <h3>Japan Sales</h3>
+        <p>Sales figures in Japan (in millions).</p>
+    </div>
+    <div class="card">
+        <h3>Other Sales</h3>
+        <p>Sales figures in other regions (in millions).</p>
+    </div>
+    <div class="card">
+        <h3>Global Sales</h3>
+        <p>Total global sales (in millions).</p>
+    </div>
+    <div class="card">
+        <h3>Critic Score</h3>
+        <p>The aggregated score given by critics.</p>
+    </div>
+    <div class="card">
+        <h3>Critic Count</h3>
+        <p>The count of critics who reviewed the game.</p>
+    </div>
+    <div class="card">
+        <h3>User Score</h3>
+        <p>The aggregated score given by users.</p>
+    </div>
+    <div class="card">
+        <h3>User Count</h3>
+        <p>The count of users who reviewed the game.</p>
+    </div>
+    <div class="card">
+        <h3>Developer</h3>
+        <p>The developer of the game.</p>
+    </div>
+    <div class="card">
+        <h3>Rating</h3>
+        <p>The age rating assigned to the game.</p>
+    </div>
+</div>
+
+{% endblock content %}
+
+
+

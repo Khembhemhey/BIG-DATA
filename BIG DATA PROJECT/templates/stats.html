@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Statistics
+{% endblock %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple HTML Page</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <h1>Column Statistics</h1>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Column</th>
+                <th>Mean</th>
+                <th>Median</th>
+                <th>Mode</th>
+                <th>Standard Deviation</th>
+                <th>Min</th>
+                <th>Max</th>
+                <th>Range</th>
+                <th>Total Rows</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% if column_stats %}
+                {% for column, stats in column_stats.items %}
+                    <tr>
+                        <td>{{ column }}</td>
+                        <td>{{ stats.mean }}</td>
+                        <td>{{ stats.median }}</td>
+                        <td>{{ stats.mode }}</td>
+                        <td>{{ stats.std }}</td>
+                        <td>{{ stats.min }}</td>
+                        <td>{{ stats.max }}</td>
+                        <td>{{ stats.range }}</td>
+                        <td>{{ stats.total_rows }}</td>
+                    </tr>
+                {% endfor %}
+            {% else %}
+                <tr>
+                    <td colspan="9">No statistics available</td>
+                </tr>
+            {% endif %}
+        </tbody>
+    </table>
+</body>
+</html>
+
+{% endblock %}

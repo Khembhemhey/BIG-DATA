@@ -1,0 +1,99 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Analytic Dashboard
+{% endblock %}
+{% load static %}
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Game Analytics Dashboard</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    {% if message %}
+    <p>{{ message }}</p>
+    {% endif %}
+    <section class="section center-section">
+        <h2 class="section-header">Import CSV</h2>
+        <form method="post" enctype="multipart/form-data" class="center-form">
+            {% csrf_token %}
+            <input type="file" name="csv_file" accept=".csv">
+            <button type="submit">Import CSV</button>
+        </form>
+    </section>
+    
+    <div class="container">
+        <section class="section">
+            {% if file_selected %}
+            <h2 class="section-header">CSV Overview</h2>
+            <div class="scrollable-box">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            {% for column in book_data.0.keys %}
+                                <th>{{ column }}</th>
+                            {% endfor %}
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for row in book_data %}
+                            <tr>
+                                {% for value in row.values %}
+                                    <td>{{ value }}</td>
+                                {% endfor %}
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </section>
+        {% endif %}
+        <div id="cleaned-message"></div> <!-- Placeholder for displaying cleaned data message -->
+    </div>
+    <script>
+        function cleanData() {
+            // Get the CSRF token
+            const csrfToken = document.querySelector('input[name="csrfmiddlewaretoken"]').value;
+
+            // Get the uploaded file
+            const fileInput = document.querySelector('input[type="file"]');
+            const file = fileInput.files[0];
+
+            // Check if a file is selected
+            if (!file) {
+                alert('Please select a file to clean.');
+                return;
+            }
+
+            // Create a FormData object and append the file to it
+            const formData = new FormData();
+            formData.append('csv_file', file); // corrected name to match Django view
+
+            // Send an AJAX request to clean the data
+            fetch('/clean_data/', {
+                method: 'POST',
+                headers: {
+                    'X-CSRFToken': csrfToken
+                },
+                body: formData
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                alert('Data cleaned successfully.');
+                location.reload();  // Reload the page to reflect the cleaned data
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        }
+    </script>
+</body>
+</html>
+{% endblock %}
